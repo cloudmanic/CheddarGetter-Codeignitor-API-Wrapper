@@ -46,7 +46,20 @@ class CheddarGetter {
 	private $_httpClient;
 	
 	/**
-	 * Constructor
+	 * Constructor - looks for configs and load them. 
+	 *
+	 */
+	function CheddarGetter()
+	{
+		$this->CI =& get_instance();
+		$this->init($this->CI->config->item('CheddarGetterHost'), 
+								$this->CI->config->item('CheddarGetterEmail'),
+								$this->CI->config->item('CheddarGetterPassword'),
+								$this->CI->config->item('CheddarGetterProduct'));
+	}
+	
+	/**
+	 * Init Script 
 	 *
 	 * @param $url string
 	 * @param $username string
@@ -54,7 +67,7 @@ class CheddarGetter {
 	 * @param $productCode string
 	 */
 	 function init($url, $username, $password, $productCode = null) {
-		
+
 		$this->setUrl($url);
 		$this->setUsername($username);
 		$this->setPassword($password);

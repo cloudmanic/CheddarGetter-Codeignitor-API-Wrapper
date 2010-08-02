@@ -3,3 +3,35 @@ Spicer Matthews
 http://www.cloudmanic.com
 
 Codeignitor wrapper for CheddarGetter
+
+
+SETUP: git clone git://github.com/cloudmanic/CheddarGetter-Codeignitor-API-Wrapper.git cipath/application/libraries/cheddargetter
+
+CONFIG: Add to config.php
+
+/*
+|--------------------------------------------------------------------------
+| CheddarGetter
+|--------------------------------------------------------------------------
+|
+| A few configs for the CheddarGetter library
+|
+*/
+$config['CheddarGetterEmail'] = 'user@email.com';
+$config['CheddarGetterPassword'] = 'your password';
+$config['CheddarGetterProduct'] = 'product code';
+$config['CheddarGetterHost'] = 'https://cheddargetter.com';
+
+or if you do not want to use the config or you want to override it you can do.
+
+$this->cheddargetter->init('https://cheddargetter.com', 'example@email.com', 'passowrd', 'Product Code');
+
+
+USAGE: In your controller.....
+
+$this->load->library('cheddargetter/cheddargetter');
+
+
+Than you can make function calls like this. 
+
+$this->cheddargetter->getCustomer('CUSTOMER CODE');
